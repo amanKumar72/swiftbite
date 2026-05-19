@@ -1,17 +1,15 @@
-import { Text, View, StyleSheet } from "react-native";
+import Navbar from "@/components/navbar";
+import { useTheme } from "@/hooks/useTheme";
+import { StatusBar, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Index() {
+  const theme = useTheme();
   return (
-    <View style={styles.container}>
-      <Text>Edit src/app/index.tsx to edit this screen.</Text>
-    </View>
+     <View className="flex-1 bg-background">
+      <Navbar />
+      <StatusBar />
+      <Text className="text-foreground">Hello</Text>
+     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
