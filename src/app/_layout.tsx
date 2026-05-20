@@ -4,7 +4,7 @@ import { ThemeProvider } from "@/context/themeContext"
 
 
 export default function RootLayout() {
-  const isLoggedIn = true;
+  const isLoggedIn = false;
   return (
     <ThemeProvider>
       <Stack screenOptions={{ headerShown: false }}>
