@@ -238,7 +238,7 @@ function TabLayout() {
           }),
         }}
       >
-        <Tabs.Screen name="(home)" options={{ headerShown: false }} />
+        <Tabs.Screen name="(drawer)" options={{ headerShown: false }} />
         <Tabs.Screen name="search" options={{ title: "Search" }} />
         <Tabs.Screen name="order" options={{ title: "Order" }} />
         <Tabs.Screen name="profile" options={{ title: "Profile" }} />

@@ -11,6 +11,8 @@ import { dishes as defaultDishes, restaurants as defaultRestaurants } from "@/co
 export const DishesContext = createContext({
   restaurants: [] as Restaurant[],
   dishes: [] as Dish[],
+  getDishById: (id: string) => undefined as Dish | undefined,
+  getRestaurantById: (id: string) => undefined as Restaurant | undefined,
 });
 
 export function DishesProvider({ children }: { children: React.ReactNode }) {
@@ -36,11 +38,20 @@ export function DishesProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
+  function getDishById(id: string) {
+    return dishes.find((dish) => dish.id === id);
+  }
+  function getRestaurantById(id: string) {
+    return restaurants.find((restaurant) => restaurant.id === id);
+  }
+
   return (
     <DishesContext.Provider
       value={{
         restaurants,
         dishes,
+        getDishById,
+        getRestaurantById,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-import { CartProvider } from "./cartContet";
+import { CartProvider } from "./cartContext";
 import { DishesProvider } from "./dishesContext";
 import { ThemeProvider } from "./themeContext";
 

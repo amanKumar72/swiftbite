@@ -59,7 +59,7 @@ export const restaurants: Restaurant[] = [
     delivery: {
       available: true,
       deliveryFee: 2.99,
-      estimatedTime: "25-35 mins",
+      estimatedTime: 35,
     },
 
     tags: ["Popular", "Fast Delivery", "Top Rated"],
@@ -131,7 +131,7 @@ export const restaurants: Restaurant[] = [
     delivery: {
       available: true,
       deliveryFee: 3.49,
-      estimatedTime: "30-40 mins",
+      estimatedTime: 35,
     },
 
     tags: ["Italian", "Best Seller", "Family Friendly"],
@@ -197,8 +197,16 @@ export const dishes: Dish[] = [
     ],
 
     addons: [
-      { name: "Extra Cheese", price: 1.5 },
-      { name: "French Fries", price: 2.99 },
+      {
+        name: "Extra Cheese",
+        price: 1.5,
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+      },
+      {
+        name: "French Fries",
+        price: 2.99,
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+      },
     ],
 
     nutritionalInfo: {
@@ -210,7 +218,7 @@ export const dishes: Dish[] = [
 
     spicyLevel: "Medium",
 
-    preparationTime: "15-20 mins",
+    preparationTime: 15,
 
     rating: {
       average: 4.6,
@@ -285,8 +293,16 @@ export const dishes: Dish[] = [
     ],
 
     addons: [
-      { name: "Extra Cheese Dip", price: 1.2 },
-      { name: "Jalapenos", price: 0.99 },
+      {
+        name: "Extra Cheese Dip",
+        price: 1.2,
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+      },
+      {
+        name: "Jalapenos",
+        price: 0.99,
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+      },
     ],
 
     nutritionalInfo: {
@@ -298,7 +314,7 @@ export const dishes: Dish[] = [
 
     spicyLevel: "Low",
 
-    preparationTime: "10 mins",
+    preparationTime: 10,
 
     rating: {
       average: 4.4,
@@ -373,8 +389,16 @@ export const dishes: Dish[] = [
     ],
 
     addons: [
-      { name: "Extra Pepperoni", price: 2.5 },
-      { name: "Stuffed Crust", price: 3.0 },
+      {
+        name: "Extra Pepperoni",
+        price: 2.5,
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+      },
+      {
+        name: "Stuffed Crust",
+        price: 3.0,
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+      },
     ],
 
     nutritionalInfo: {
@@ -386,7 +410,7 @@ export const dishes: Dish[] = [
 
     spicyLevel: "Medium",
 
-    preparationTime: "20-25 mins",
+    preparationTime: 25,
 
     rating: {
       average: 4.8,
@@ -461,8 +485,16 @@ export const dishes: Dish[] = [
     ],
 
     addons: [
-      { name: "Extra Cheese", price: 2.0 },
-      { name: "Olives", price: 1.5 },
+      {
+        name: "Extra Cheese",
+        price: 2.0,
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+      },
+      {
+        name: "Olives",
+        price: 1.5,
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+      },
     ],
 
     nutritionalInfo: {
@@ -474,7 +506,7 @@ export const dishes: Dish[] = [
 
     spicyLevel: "Low",
 
-    preparationTime: "18-22 mins",
+    preparationTime: 22,
 
     rating: {
       average: 4.7,
@@ -550,8 +582,16 @@ export const dishes: Dish[] = [
     ],
 
     addons: [
-      { name: "Grilled Chicken", price: 3.5 },
-      { name: "Garlic Bread", price: 2.5 },
+      {
+        name: "Grilled Chicken",
+        price: 3.5,
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+      },
+      {
+        name: "Garlic Bread",
+        price: 2.5,
+        image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd",
+      },
     ],
 
     nutritionalInfo: {
@@ -563,7 +603,7 @@ export const dishes: Dish[] = [
 
     spicyLevel: "Low",
 
-    preparationTime: "20 mins",
+    preparationTime: 20,
 
     rating: {
       average: 4.5,

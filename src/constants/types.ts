@@ -39,7 +39,7 @@ export interface Restaurant {
   delivery: {
     available: boolean;
     deliveryFee: number;
-    estimatedTime: string;
+    estimatedTime: number;
   };
   tags: string[];
   isOpen: boolean;
@@ -47,7 +47,32 @@ export interface Restaurant {
   createdAt: string;
   updatedAt: string;
 }
-
+export type AddonType = {
+  name: string;
+  price: number;
+  image?: string;
+};
+export type PortionType = {
+  name: string;
+  price: number;
+};
+export type NutritionalInfoType = {
+  calories: number;
+  protein: string;
+  carbs: string;
+  fat: string;
+};
+export type DietaryType = {
+  isVegetarian: boolean;
+  isVegan: boolean;
+  isGlutenFree: boolean;
+};
+export type PriceType = {
+  base: number;
+  currency: string;
+  discount: number;
+  finalPrice: number;
+};
 export interface Dish {
   id: string;
   restaurantId: string;
@@ -59,29 +84,13 @@ export interface Dish {
   cuisine: string;
   image: string;
   gallery: string[];
-  price: {
-    base: number;
-    currency: string;
-    discount: number;
-    finalPrice: number;
-  };
-  sizes: {
-    name: string;
-    price: number;
-  }[];
+  price: PriceType;
+  sizes:PortionType[];
   ingredients: string[];
-  addons: {
-    name: string;
-    price: number;
-  }[];
-  nutritionalInfo: {
-    calories: number;
-    protein: string;
-    carbs: string;
-    fat: string;
-  };
+  addons: AddonType[];
+  nutritionalInfo: NutritionalInfoType;
   spicyLevel: string;
-  preparationTime: string;
+  preparationTime: number;
   rating: {
     average: number;
     totalReviews: number;
@@ -90,12 +99,20 @@ export interface Dish {
   isAvailable: boolean;
   isFeatured: boolean;
   isFavourite: boolean;
-  dietary: {
-    isVegetarian: boolean;
-    isVegan: boolean;
-    isGlutenFree: boolean;
-  };
+  dietary: DietaryType;
   tags: string[];
   createdAt: string;
   updatedAt: string;
+}
+
+export interface CartItem {
+  dishId: string;
+  restaurantId: string;
+  size: PortionType;
+  addons: AddonType[];
+  finalPrice: number;
+  deliveryFee: number;
+  deliveryTime: number;
+  deliveryLocation?: string;
+  quantity: number;
 }

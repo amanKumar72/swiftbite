@@ -17,7 +17,7 @@ export default function DrawerLayout() {
         }}
     >
         <Drawer.Screen
-            name="index"
+            name="(home)"
             options={{
                 drawerLabel: 'Home',
                 title: 'Home',
@@ -27,12 +27,12 @@ export default function DrawerLayout() {
             }}
         />
         <Drawer.Screen
-            name="explore"
+            name="cart"
             options={{
-                drawerLabel: 'Explore',
-                title: 'Explore',
+                drawerLabel: 'Cart',
+                title: 'Cart',
                 drawerIcon: ({ color }) => (
-                    <Ionicons name="compass-outline" size={20} color={color} />
+                    <Ionicons name="cart-outline" size={20} color={color} />
                 ),
             }}
         />
