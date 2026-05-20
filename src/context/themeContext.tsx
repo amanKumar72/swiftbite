@@ -6,17 +6,18 @@ import {
 } from "react";
 import { Appearance, type ColorSchemeName } from "react-native";
 import * as SecureStore from "expo-secure-store";
+import { colors } from "@/constants/colors";
 
 type Theme = "light" | "dark";
 
 export const ThemeContext = createContext({
   theme: "dark" as Theme,
   toggleTheme: () => {},
+  colors: colors.dark,
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("dark");
-
   useEffect(() => {
     loadTheme();
   }, []);
@@ -47,6 +48,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       value={{
         theme,
         toggleTheme,
+        colors: colors[theme],
       }}
     >
       {children}
