@@ -41,22 +41,31 @@ const TAB_CONFIG: Record<
     icon: { ios: "house", android: "home", web: "home" },
     iconActive: { ios: "house.fill", android: "home_filled", web: "home_filled" },
   },
-  explore: {
-    label: "Explore",
-    icon: { ios: "safari", android: "explore", web: "explore" },
+  search: {
+    label: "Search",
+    icon: { ios: "magnifyingglass", android: "search", web: "search" },
     iconActive: {
-      ios: "safari.fill",
-      android: "explore",
-      web: "explore",
+      ios: "magnifyingglass",
+      android: "search",
+      web: "search",
     },
   },
-  settings: {
-    label: "Settings",
-    icon: { ios: "gearshape", android: "settings", web: "settings" },
+  order: {
+    label: "Order",
+    icon: { ios: "bag", android: "shopping_bag", web: "shopping_bag" },
     iconActive: {
-      ios: "gearshape.fill",
-      android: "settings",
-      web: "settings",
+      ios: "bag.fill",
+      android: "shopping_bag",
+      web: "shopping_bag",
+    },
+  },
+  profile: {
+    label: "Profile",
+    icon: { ios: "person", android: "person", web: "person" },
+    iconActive: {
+      ios: "person.fill",
+      android: "person",
+      web: "person",
     },
   },
 };
@@ -229,9 +238,10 @@ function TabLayout() {
           }),
         }}
       >
-        <Tabs.Screen name="index" options={{ title: "Home" }} />
-        <Tabs.Screen name="explore" options={{ title: "Explore" }} />
-        <Tabs.Screen name="settings" options={{ title: "Settings" }} />
+        <Tabs.Screen name="(home)" options={{ headerShown: false }} />
+        <Tabs.Screen name="search" options={{ title: "Search" }} />
+        <Tabs.Screen name="order" options={{ title: "Order" }} />
+        <Tabs.Screen name="profile" options={{ title: "Profile" }} />
       </Tabs>
     </View>
   );

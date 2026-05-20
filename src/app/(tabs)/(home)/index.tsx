@@ -1,7 +1,8 @@
-import Navbar from "@/components/navbar";
-import { StatusBar, Text, View } from "react-native";
+import { Text, View } from "react-native";
+import { useDishes } from "@/hooks/useDishes";
 
 export default function HomeTab() {
+  const { dishes } = useDishes();
   return (
     <View className="flex-1 bg-background">
       <Text className="text-foreground">Hello</Text>
