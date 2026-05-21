@@ -200,7 +200,7 @@ export default function SettingsTab() {
         {/* Logout Button */}
         <Pressable
           onPress={openLogoutModal}
-          className="w-full bg-primary border border-error/20 py-4 rounded-xl active:bg-error/10"
+          className="button-primary"
         >
           <Text className="text-center text-on-primary font-semibold text-base">
             Log Out

@@ -2,6 +2,7 @@ import { CartItem } from "@/constants/types";
 import { useCart } from "@/hooks/useCart";
 import { useDishes } from "@/hooks/useDishes";
 import { useTheme } from "@/hooks/useTheme";
+import { useUser } from "@/hooks/useUser";
 import { FontAwesome } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React from "react";
@@ -11,6 +12,7 @@ const Cart = () => {
   const { cart, increaseQuantity, decreaseQuantity, removeCartItem } = useCart();
   const { getDishById, getRestaurantById } = useDishes();
   const { colors } = useTheme();
+  const { user } = useUser();
   const router = useRouter();
 
   const calculateSubtotal = () => {
@@ -189,9 +191,22 @@ const Cart = () => {
                 Delivery to
               </Text>
             </View>
-            <Text className="text-base font-semibold text-on-surface">
-              {cart[0]?.deliveryLocation || 'Unknown Location'}
-            </Text>
+            {
+              user?.address?.street ? (
+                <View className="flex flex-col gap-1">
+                  <Text className="text-base font-semibold text-on-surface">
+                    {user?.address?.street}
+                  </Text>
+                  <Text className="text-base font-semibold text-on-surface">
+                    {user?.address?.city}, {user?.address?.state} {user?.address?.country} ({user?.address?.zipCode})
+                  </Text>
+                </View>
+              ) : (
+                <Text className="text-base font-semibold text-on-surface">
+                  Unknown Location
+                </Text>
+              )
+            }
           </View>
         </View>
 
@@ -221,8 +236,8 @@ const Cart = () => {
         </View>
 
         {/* Proceed to Checkout Button */}
-        <Pressable className="w-full bg-primary-container h-14 rounded-xl flex-row items-center justify-center gap-2 shadow-lg shadow-primary/20">
-          <Text className="text-white not-[]:font-bold text-base">
+        <Pressable className="w-full bg-primary-container h-14 rounded-xl flex-row items-center justify-center gap-2 ">
+          <Text className="text-on-primary font-semibold text-lg">
             Proceed to Checkout
           </Text>
           <FontAwesome name="arrow-right" size={20} color="white" />

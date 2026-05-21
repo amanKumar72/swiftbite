@@ -9,7 +9,6 @@ import {
   Pressable,
   ScrollView,
   Text,
-  TextInput,
   View,
 } from "react-native";
 
@@ -19,7 +18,6 @@ export default function HomeTab() {
   const { dishes } = useDishes();
   const { colors } = useTheme();
   const router = useRouter();
-  const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [userName] = useState(
     randomNames[Math.floor(Math.random() * randomNames.length)],
@@ -113,24 +111,6 @@ export default function HomeTab() {
   return (
     <View className="flex-1 bg-background h-screen">
       <ScrollView className="flex-1 px-5">
-
-        {/* Search Section */}
-        <View className="relative my-2">
-          <TextInput
-            className="w-full bg-surface-container rounded-full py-4 pl-12 pr-12 text-on-surface"
-            placeholder="Search your favorite food"
-            placeholderTextColor={colors.secondary}
-            value={searchQuery}
-            onChangeText={setSearchQuery}
-          />
-          <FontAwesome
-            name="search"
-            size={20}
-            color={colors.secondary}
-            className="absolute left-4 top-1/2 -translate-y-1/2"
-          />
-        </View>
-
         {/* Category Chips */}
         <ScrollView
           horizontal

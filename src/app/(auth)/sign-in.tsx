@@ -122,7 +122,7 @@ const SignIn = () => {
                 </Text>
                 <View className="relative">
                   <TextInput
-                    className="w-full h-14 bg-surface-container border border-foreground/20 rounded-lg pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/30"
+                    className="input-icon"
                     placeholder="name@example.com"
                     placeholderTextColor={colors.onSurfaceVariant}
                     value={userName}
@@ -143,7 +143,7 @@ const SignIn = () => {
                 </Text>
                 <View className="relative">
                   <TextInput
-                    className="w-full h-14 bg-surface-container border border-foreground/20 rounded-lg pl-12 pr-12 text-on-surface placeholder:text-on-surface-variant/30"
+                    className="input-icon"
                     placeholder="••••••••"
                     placeholderTextColor={colors.onSurfaceVariant}
                     value={password}

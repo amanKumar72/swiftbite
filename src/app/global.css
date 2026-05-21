@@ -213,3 +213,15 @@ body {
   shadow-radius: 30px;
   elevation: 8;
 }
+
+.input {
+  @apply w-full h-14 bg-surface-container border border-foreground/20 rounded-lg pl-5 pr-4 text-on-surface placeholder:text-on-surface-variant/30
+}
+
+.input-icon {
+  @apply w-full h-14 bg-surface-container border border-foreground/20 rounded-lg pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/30
+}
+
+.button-primary {
+  @apply w-fit h-14 flex items-center justify-center bg-primary-container rounded-xl mt-4 active:scale-[0.98]
+}

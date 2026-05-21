@@ -133,7 +133,7 @@ const SignUp = () => {
                 </Text>
                 <View className="relative">
                   <TextInput
-                    className="w-full h-14 bg-surface-container border border-foreground/20 rounded-lg pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/30"
+                    className="input-icon"
                     placeholder="amankumar"
                     placeholderTextColor={colors.onSurfaceVariant}
                     value={userName}
@@ -155,7 +155,7 @@ const SignUp = () => {
                 </Text>
                 <View className="relative">
                   <TextInput
-                    className="w-full h-14 bg-surface-container border border-foreground/20 rounded-lg pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/30"
+                    className="input-icon"
                     placeholder="name@example.com"
                     placeholderTextColor={colors.onSurfaceVariant}
                     value={email}
@@ -179,7 +179,7 @@ const SignUp = () => {
                 </Text>
                 <View className="relative">
                   <TextInput
-                    className="w-full h-14 bg-surface-container border border-foreground/20 rounded-lg pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/30"
+                    className="input-icon"
                     placeholder="+1 (555) 000-0000"
                     placeholderTextColor={colors.onSurfaceVariant}
                     value={phone}
@@ -202,7 +202,7 @@ const SignUp = () => {
                 </Text>
                 <View className="relative">
                   <TextInput
-                    className="w-full h-14 bg-surface-container border border-foreground/20 rounded-lg pl-12 pr-12 text-on-surface placeholder:text-on-surface-variant/30"
+                    className="input-icon"
                     placeholder="••••••••"
                     placeholderTextColor={colors.onSurfaceVariant}
                     value={password}
@@ -265,7 +265,7 @@ const SignUp = () => {
               {/* Sign Up Button */}
               <Pressable
                 onPress={handleSignUp}
-                className="w-fit h-14 flex items-center justify-center bg-primary-container rounded-xl mt-4 active:scale-[0.98]"
+                className="button-primary"
               >
                 <Text className="text-white text-lg font-semibold text-center leading-[56px]">
                   Create Account
