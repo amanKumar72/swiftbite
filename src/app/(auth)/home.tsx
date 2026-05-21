@@ -15,9 +15,8 @@ const Home = () => {
 
   return (
     <View className="flex-1 bg-background">
-      <Navbar />
       {!isDesktop ? (
-        <View className="flex-1 h-full items-center justify-end mb-20">
+        <View className="flex-1 h-full items-center justify-end ">
           {/* Background Image */}
           <View className="absolute inset-0 z-0">
             <Image

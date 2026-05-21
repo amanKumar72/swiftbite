@@ -89,7 +89,6 @@ const SignIn = () => {
 
   return (
     <ScrollView className="flex-1 bg-background">
-      <Pressable onPress={() => router.push('/')} className="absolute top-20 left-10 z-20" ><Text className="bg-foreground">Back</Text></Pressable>
       <View className="grow flex-col items-center justify-center px-5 py-16 min-h-screen">
         {/* Hero Decorative Background */}
         <View className="fixed inset-0 overflow-hidden opacity-20 pointer-events-none">
