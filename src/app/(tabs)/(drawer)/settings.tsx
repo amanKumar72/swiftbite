@@ -46,7 +46,7 @@ export default function SettingsTab() {
   };
   const handleLogout = () => {
     removeUser();
-    router.replace("/(auth)/sign-in");
+    router.replace("/");
   };
   const closeLogoutModal = () => {
     setLogoutModalVisible(false);

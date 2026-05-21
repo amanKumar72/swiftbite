@@ -14,7 +14,7 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function ProfileTab() {
-  const { user, setUser } = useUser();
+  const { user, removeUser, setUser } = useUser();
   const { colors } = useTheme();
   const router = useRouter();
   console.log(user)
@@ -44,8 +44,8 @@ export default function ProfileTab() {
   };
 
   const handleLogout = () => {
-    setUser(null);
-    router.replace("/(auth)/sign-in");
+    removeUser();
+    router.replace("/");
   };
 
   const closeLogoutModal = () => {
