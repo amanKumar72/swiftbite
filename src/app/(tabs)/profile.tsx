@@ -184,7 +184,7 @@ export default function ProfileTab() {
             {isEditingAddress ? (
               <View className="space-y-3">
                 <View>
-                  <Text className="text-xs text-on-surface-variant mb-1">
+                  <Text className="text-sm text-on-surface-variant mb-1 ml-2">
                     Street
                   </Text>
                   <TextInput
@@ -198,7 +198,7 @@ export default function ProfileTab() {
                   />
                 </View>
                 <View>
-                  <Text className="text-xs text-on-surface-variant mb-1">
+                  <Text className="text-sm text-on-surface-variant my-2 ml-2">
                     City
                   </Text>
                   <TextInput
@@ -213,7 +213,7 @@ export default function ProfileTab() {
                 </View>
                 <View className="flex-row gap-3">
                   <View className="flex-1">
-                    <Text className="text-xs text-on-surface-variant mb-1">
+                    <Text className="text-sm text-on-surface-variant my-2 ml-2">
                       State
                     </Text>
                     <TextInput
@@ -227,11 +227,11 @@ export default function ProfileTab() {
                     />
                   </View>
                   <View className="flex-1">
-                    <Text className="text-xs text-on-surface-variant mb-1">
+                    <Text className="text-sm text-on-surface-variant my-2 ml-2">
                       ZIP Code
                     </Text>
                     <TextInput
-                      className="button"
+                      className="input"
                       placeholder="ZIP"
                       placeholderTextColor={colors.onSurfaceVariant}
                       value={address.zipCode}
@@ -242,7 +242,7 @@ export default function ProfileTab() {
                   </View>
                 </View>
                 <View>
-                  <Text className="text-xs text-on-surface-variant mb-1">
+                  <Text className="text-sm text-on-surface-variant my-2 ml-2">
                     Country
                   </Text>
                   <TextInput

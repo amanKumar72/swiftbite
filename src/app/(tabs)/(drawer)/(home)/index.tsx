@@ -29,7 +29,7 @@ export default function HomeTab() {
   const recommendedDishes = dishes;
 
   const handleRedirectToDish = (id: string) => {
-    router.push({ pathname: "/(tabs)/(drawer)/(home)/dish/[id]", params: { id } });
+    router.push({ pathname: "/dish/[id]", params: { id } });
   };
 
   const renderPopularCard = ({ item }: { item: any }) => (

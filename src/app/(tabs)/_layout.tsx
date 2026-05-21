@@ -1,7 +1,7 @@
 import { useTheme } from "@/hooks/useTheme";
 import type { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import { GlassView, isGlassEffectAPIAvailable } from "expo-glass-effect";
-import { Tabs } from "expo-router";
+import { Tabs, useRouter } from "expo-router";
 import type { AndroidSymbol } from "expo-symbols";
 import { SymbolView } from "expo-symbols";
 import type { ReactNode } from "react";
@@ -166,6 +166,7 @@ function TabBarItem({
 
 function MyTabBar({ state, descriptors, navigation, insets }: BottomTabBarProps) {
   const { colors } = useTheme();
+  const router = useRouter();
 
   return (
     <View
@@ -193,6 +194,8 @@ function MyTabBar({ state, descriptors, navigation, insets }: BottomTabBarProps)
 
             if (!isFocused && !event.defaultPrevented) {
               navigation.navigate(route.name, route.params);
+            } else if (isFocused && route.name === "(drawer)") {
+              router.push("/(tabs)/(drawer)/(home)");
             }
           };
 

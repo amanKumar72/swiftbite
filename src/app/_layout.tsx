@@ -23,6 +23,7 @@ function RootNavigator() {
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
       </Stack.Protected>
       <Stack.Protected guard={isLoggedIn}>
+        <Stack.Screen name="dish" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
       </Stack.Protected>
     </Stack>

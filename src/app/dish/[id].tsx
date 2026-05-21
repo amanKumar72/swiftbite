@@ -6,6 +6,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Image, Pressable, ScrollView, Text, View } from "react-native";
 import { AddonType, PortionType } from "@/constants/types";
+import { SafeAreaView } from "react-native-safe-area-context";
 const Dish = () => {
   const { id } = useLocalSearchParams();
   const { getDishById, getRestaurantById } = useDishes();
@@ -61,19 +62,14 @@ const Dish = () => {
   };
 
   return (
-    <View className="flex-1 bg-background pb-20">
+    <View className="flex-1 bg-background pb-20 relative">
       {/* Top Navigation */}
-      {/* <View className="absolute top-0 left-0 w-full z-50 flex-row justify-between items-center px-5 h-16">
-        <Pressable
-          onPress={() => router.back()}
-          className="bg-black/40 backdrop-blur-md h-12 w-12 rounded-full items-center justify-center border border-white/10"
-        >
-          <FontAwesome name="arrow-left" size={24} color={colors.onSurface} />
-        </Pressable>
-        <Pressable className="bg-black/40 backdrop-blur-md h-12 w-12 rounded-full items-center justify-center border border-white/10">
-          <FontAwesome name="ellipsis-h" size={24} color={colors.onSurface} />
-        </Pressable>
-      </View> */}
+          <Pressable
+            onPress={() => router.back()}
+            className="absolute bg-primary z-100 top-12 left-4 h-12 w-12 rounded-full items-center justify-center border border-white/10"
+          >
+            <FontAwesome name="arrow-left" size={24} className="text-on-primary" />
+          </Pressable>
 
       <ScrollView className="flex-1 pb-32">
         {/* Hero Image */}
