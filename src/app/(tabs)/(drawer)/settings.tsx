@@ -4,7 +4,32 @@ import { useUser } from "@/hooks/useUser";
 import { FontAwesome } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Image, Pressable, ScrollView, Switch, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View } from "react-native";
+
+const CustomToggle = ({
+  value,
+  onValueChange,
+}: {
+  value: boolean;
+  onValueChange: (value: boolean) => void;
+}) => {
+  const { colors } = useTheme();
+
+  return (
+    <Pressable
+      onPress={() => onValueChange(!value)}
+      className={`w-12 h-7 rounded-full p-1 transition-colors duration-200 ${
+        value ? "bg-primary" : "bg-surface-container-highest"
+      }`}
+    >
+      <View
+        className={`w-5 h-5 rounded-full bg-white shadow-md transition-transform duration-200 ${
+          value ? "translate-x-5" : "translate-x-0"
+        }`}
+      />
+    </Pressable>
+  );
+};
 
 export default function SettingsTab() {
   const { colors } = useTheme();
@@ -13,7 +38,7 @@ export default function SettingsTab() {
   const [pushNotifications, setPushNotifications] = useState(true);
   const [emailNotifications, setEmailNotifications] = useState(true);
   const [smsUpdates, setSmsUpdates] = useState(false);
-  const {removeUser} = useUser()
+  const { removeUser } = useUser();
   const [logoutModalVisible, setLogoutModalVisible] = useState(false);
 
   const openLogoutModal = () => {
@@ -58,53 +83,25 @@ export default function SettingsTab() {
                   Real-time order updates
                 </Text>
               </View>
-              <Switch
+              <CustomToggle
                 value={pushNotifications}
                 onValueChange={setPushNotifications}
-                trackColor={{
-                  false: colors.onSurfaceVariant,
-                  true: colors.primaryContainer,
-                }}
-                thumbColor={
-                  pushNotifications
-                    ? colors.onPrimaryContainer
-                    : colors.onSurface
-                }
               />
             </View>
             <View className="flex-row items-center justify-between p-3 rounded-lg">
               <Text className="text-sm font-semibold text-on-surface">
                 Email Notifications
               </Text>
-              <Switch
+              <CustomToggle
                 value={emailNotifications}
                 onValueChange={setEmailNotifications}
-                trackColor={{
-                  false: colors.onSurfaceVariant,
-                  true: colors.primaryContainer,
-                }}
-                thumbColor={
-                  emailNotifications
-                    ? colors.onPrimaryContainer
-                    : colors.onSurface
-                }
               />
             </View>
             <View className="flex-row items-center justify-between p-3 rounded-lg">
               <Text className="text-sm font-semibold text-on-surface">
                 SMS Updates
               </Text>
-              <Switch
-                value={smsUpdates}
-                onValueChange={setSmsUpdates}
-                trackColor={{
-                  false: colors.onSurfaceVariant,
-                  true: colors.primaryContainer,
-                }}
-                thumbColor={
-                  smsUpdates ? colors.onPrimaryContainer : colors.onSurface
-                }
-              />
+              <CustomToggle value={smsUpdates} onValueChange={setSmsUpdates} />
             </View>
           </View>
         </View>
@@ -142,31 +139,25 @@ export default function SettingsTab() {
         </View>
 
         {/* App Preferences */}
-          <View className="flex-1 flex-row items-center justify-between bg-surface-container rounded-xl p-4 mb-4 border border-white/5">
-            <View className="flex-row items-center gap-2">
-              <FontAwesome name="language" size={22} color={colors.primary} />
-              <Text className="text-lg font-semibold text-on-surface">
-                Language
-              </Text>
-            </View>
-            <View className="flex-row items-center justify-between p-3 bg-surface-variant/20 rounded-lg">
-              <Text className="text-sm text-on-surface">English (US)</Text>
-              <FontAwesome
-                name="chevron-down"
-                size={20}
-                color={colors.primary}
-              />
-            </View>
+        <View className="flex-1 flex-row items-center justify-between bg-surface-container rounded-xl p-4 mb-4 border border-white/5">
+          <View className="flex-row items-center gap-2">
+            <FontAwesome name="language" size={22} color={colors.primary} />
+            <Text className="text-lg font-semibold text-on-surface">
+              Language
+            </Text>
           </View>
-          <View className="flex-1 flex-row items-center justify-between bg-surface-container rounded-xl p-4 mb-4 border border-white/5">
-            <View className="flex-row items-center gap-2">
-              <FontAwesome name="moon-o" size={22} color={colors.primary} />
-              <Text className="text-lg font-semibold text-on-surface">
-                Theme
-              </Text>
-            </View>
-            <ThemeToggle/>
+          <View className="flex-row items-center justify-between p-3 bg-surface-variant/20 rounded-lg">
+            <Text className="text-sm text-on-surface">English (US)</Text>
+            <FontAwesome name="chevron-down" size={20} color={colors.primary} />
           </View>
+        </View>
+        <View className="flex-1 flex-row items-center justify-between bg-surface-container rounded-xl p-4 mb-4 border border-white/5">
+          <View className="flex-row items-center gap-2">
+            <FontAwesome name="moon-o" size={22} color={colors.primary} />
+            <Text className="text-lg font-semibold text-on-surface">Theme</Text>
+          </View>
+          <ThemeToggle />
+        </View>
 
         {/* About Section */}
         <View className="bg-surface-container rounded-xl p-4 mb-4 border border-white/5">
@@ -207,14 +198,20 @@ export default function SettingsTab() {
         </View>
 
         {/* Logout Button */}
-        <Pressable onPress={openLogoutModal}  className="w-full bg-primary border border-error/20 py-4 rounded-xl active:bg-error/10">
+        <Pressable
+          onPress={openLogoutModal}
+          className="w-full bg-primary border border-error/20 py-4 rounded-xl active:bg-error/10"
+        >
           <Text className="text-center text-on-primary font-semibold text-base">
             Log Out
           </Text>
         </Pressable>
       </ScrollView>
       {logoutModalVisible && (
-        <View style={{ elevation: 10 }} className="absolute inset-0 bg-black/50 flex items-center justify-center">
+        <View
+          style={{ elevation: 10 }}
+          className="absolute inset-0 bg-black/50 flex items-center justify-center"
+        >
           <View className="bg-surface-container rounded-xl p-6">
             <Text className="text-xl font-semibold text-on-surface mb-4">
               Are you sure you want to log out?
