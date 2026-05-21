@@ -224,7 +224,7 @@ const Dish = () => {
           </Text>
         </View>
         <Pressable onPress={()=>handleAddToCart()} className="bg-primary-container px-8 py-4 rounded-full shadow-lg">
-          <Text className="text-sm font-bold text-on-primary-container">
+          <Text className="text-sm font-bold text-white">
             Add to cart
           </Text>
         </Pressable>

@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { useState } from "react";
+import { use, useState } from "react";
 import { FontAwesome } from "@expo/vector-icons";
 import {
   Image,
@@ -11,28 +11,26 @@ import {
   View,
 } from "react-native";
 import { useTheme } from "@/hooks/useTheme";
+import { useUser } from "@/hooks/useUser";
+import { Button } from "@react-navigation/elements";
 
 const SignIn = () => {
   const { width } = useWindowDimensions();
+  const {setUser} = useUser()
   const isDesktop = width >= 768;
   const { colors } = useTheme();
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSignIn = () => {
+  const handleSignIn = async () => {
     setIsLoading(true);
     setError("");
-    if (!email || !password) {
+    if (!userName || !password) {
       setError("Please fill in all fields");
-      setIsLoading(false);
-      return;
-    }
-    if (!/^\S+@\S+\.\S+$/.test(email)) {
-      setError("Please enter a valid email address");
       setIsLoading(false);
       return;
     }
@@ -51,22 +49,52 @@ const SignIn = () => {
       setIsLoading(false);
       return;
     }
-    console.log("Sign In Data:", { email, password });
-    setTimeout(() => {
-      setError("Sign In Successful");
+    const res = await fetch("https://api.freeapi.app/api/v1/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: userName,
+        password,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      setError(data.message || "An error occurred while creating your account");
       setIsLoading(false);
-      setEmail("");
-      setPassword("");
-    }, 1000);
+      return;
+    }
+    const userData = data.data.user
+    await setUser({
+      _id: userData._id as string,
+      avatar: {
+        _id: userData.avatar._id as string,
+        localPath: userData.avatar.localPath as string,
+        url: userData.avatar.url as string,
+      },
+      createdAt: userData.createdAt as string,
+      email: userData.email as string,
+      isEmailVerified: userData.isEmailVerified as boolean,
+      loginType: userData.loginType as string,
+      role: userData.role as string,
+      updatedAt: userData.updatedAt as string,
+      username: userData.username as string
+    });
+    setIsLoading(false);
+    setUserName("");
+    setPassword("");
+    router.push("/");
   };
 
   return (
     <ScrollView className="flex-1 bg-background">
+      <Pressable onPress={() => router.push('/')} className="absolute top-20 left-10 z-20" ><Text className="bg-foreground">Back</Text></Pressable>
       <View className="grow flex-col items-center justify-center px-5 py-16 min-h-screen">
         {/* Hero Decorative Background */}
         <View className="fixed inset-0 overflow-hidden opacity-20 pointer-events-none">
-          <View className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] rounded-full bg-primary/20 blur-[120px]" />
-          <View className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full bg-tertiary/10 blur-[100px]" />
+          <View className="absolute top-[-10%] right-[-10%] w-150 h-150 rounded-full bg-primary/20 blur-[120px]" />
+          <View className="absolute bottom-[-10%] left-[-10%] w-125 h-125 rounded-full bg-tertiary/10 blur-[100px]" />
         </View>
 
         {/* Auth Container */}
@@ -91,15 +119,15 @@ const SignIn = () => {
               {/* Email Field */}
               <View className="space-y-2">
                 <Text className="text-sm font-semibold text-on-surface-variant ml-1 my-2">
-                  Email Address
+                  User Name
                 </Text>
                 <View className="relative">
                   <TextInput
                     className="w-full h-14 bg-surface-container border border-foreground/20 rounded-lg pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/30"
                     placeholder="name@example.com"
                     placeholderTextColor={colors.onSurfaceVariant}
-                    value={email}
-                    onChangeText={setEmail}
+                    value={userName}
+                    onChangeText={setUserName}
                     keyboardType="email-address"
                     autoCapitalize="none"
                   />
@@ -136,7 +164,7 @@ const SignIn = () => {
                 </View>
               </View>
               <Text className="text-sm text-on-surface-variant ml-1 my-2 italic">
-                Note: Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number and one special character
+                Note: User Name must be lowercase. Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number and one special character
               </Text>
               {error ? <Text className="text-red-500 text-sm">{error}</Text> : null}
               {/* Sign In Button */}

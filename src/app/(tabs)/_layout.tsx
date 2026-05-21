@@ -120,7 +120,6 @@ function TabBarItem({
 }) {
   const scale = useSharedValue(1);
   const { colors } = useTheme()
-  console.log({ width :Math.round(100 / length) });
 
   const animatedStyle = useAnimatedStyle(() => ({
     transform: [{ scale: scale.value }],
@@ -238,7 +237,7 @@ function TabLayout() {
           }),
         }}
       >
-        <Tabs.Screen name="(drawer)" options={{ headerShown: false }} />
+        <Tabs.Screen name="(drawer)" options={{ title: "Home", headerShown: false }} />
         <Tabs.Screen name="search" options={{ title: "Search" }} />
         <Tabs.Screen name="order" options={{ title: "Order" }} />
         <Tabs.Screen name="profile" options={{ title: "Profile" }} />

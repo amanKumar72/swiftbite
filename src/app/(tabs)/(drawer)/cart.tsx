@@ -222,14 +222,10 @@ const Cart = () => {
 
         {/* Proceed to Checkout Button */}
         <Pressable className="w-full bg-primary-container h-14 rounded-xl flex-row items-center justify-center gap-2 shadow-lg shadow-primary/20">
-          <Text className="text-on-primary-container font-bold text-base">
+          <Text className="text-white not-[]:font-bold text-base">
             Proceed to Checkout
           </Text>
-          <FontAwesome
-            name="arrow-right"
-            size={20}
-            color={colors.onPrimaryContainer}
-          />
+          <FontAwesome name="arrow-right" size={20} color="white" />
         </Pressable>
       </ScrollView>
     </View>

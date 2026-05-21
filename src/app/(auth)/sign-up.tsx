@@ -18,7 +18,7 @@ const SignUp = () => {
   const { colors } = useTheme();
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
-  const [fullName, setFullName] = useState("");
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -26,10 +26,10 @@ const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     setIsLoading(true);
     setError("");
-    if (!fullName || !email || !phone || !password) {
+    if (!userName || !email || !phone || !password) {
       setError("Please fill in all fields");
       setIsLoading(false);
       return;
@@ -70,16 +70,32 @@ const SignUp = () => {
       setIsLoading(false);
       return;
     }
-    console.log("Sign Up Data:", { fullName, email, phone, password });
-    setTimeout(() => {
-      setError("Account Created Successfully");
+    const res = await fetch("https://api.freeapi.app/api/v1/users/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: userName,
+        email,
+        phone,
+        role: "USER",
+        password,
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      setError(data.message || "An error occurred while creating your account");
       setIsLoading(false);
-      setFullName("");
-      setEmail("");
-      setPhone("");
-      setPassword("");
-      setAgreeTerms(false);
-    }, 1000);
+      return;
+    }
+    router.replace("/(auth)/sign-in");
+    setIsLoading(false);
+    setUserName("");
+    setEmail("");
+    setPhone("");
+    setPassword("");
+    setAgreeTerms(false);
   };
 
   return (
@@ -113,15 +129,15 @@ const SignUp = () => {
               {/* Full Name Field */}
               <View className="space-y-2">
                 <Text className="text-sm font-semibold text-on-surface-variant ml-1 my-2">
-                  Full Name
+                  User Name
                 </Text>
                 <View className="relative">
                   <TextInput
                     className="w-full h-14 bg-surface-container border border-foreground/20 rounded-lg pl-12 pr-4 text-on-surface placeholder:text-on-surface-variant/30"
-                    placeholder="James Richardson"
+                    placeholder="amankumar"
                     placeholderTextColor={colors.onSurfaceVariant}
-                    value={fullName}
-                    onChangeText={setFullName}
+                    value={userName}
+                    onChangeText={setUserName}
                   />
                   <FontAwesome
                     name="user"
@@ -237,7 +253,8 @@ const SignUp = () => {
               </View>
 
               <Text className="text-sm text-on-surface-variant ml-1 my-2 italic">
-                Note: Password must be at least 8 characters long and contain at
+                Note: User Name must be lowercase. 
+                Password must be at least 8 characters long and contain at
                 least one uppercase letter, one lowercase letter, one number and
                 one special character
               </Text>

@@ -116,3 +116,26 @@ export interface CartItem {
   deliveryLocation?: string;
   quantity: number;
 }
+
+export interface User{
+  _id: string;
+  avatar: {
+    _id: string;
+    localPath: string;
+    url: string;
+  };
+  createdAt: string;
+  email: string;
+  isEmailVerified: boolean;
+  loginType: string;
+  role: string;
+  updatedAt: string;
+  username: string;
+  address?: {
+    street: string;
+    city: string;
+    state: string;
+    country: string;
+    zipCode: string;
+  }
+}

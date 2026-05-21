@@ -6,7 +6,6 @@ import { useTheme } from '@/hooks/useTheme'
 
 const Navbar = () => {
   const {theme} = useTheme()
-  console.log({theme})
   return (
     <SafeAreaView>
       <View className='bg-background flex flex-row justify-between items-center p-4'>
