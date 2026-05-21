@@ -46,5 +46,15 @@ export default function DrawerLayout() {
                 ),
             }}
         />
+        <Drawer.Screen
+            name="helpCenter"
+            options={{
+                drawerLabel: 'Help Center',
+                title: 'Help Center',
+                drawerIcon: ({ color }) => (
+                    <Ionicons name="help-circle-outline" size={20} color={color} />
+                ),
+            }}
+        />
     </Drawer>)
 }

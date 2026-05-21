@@ -68,32 +68,10 @@ const Cart = () => {
 
   return (
     <View className="flex-1 bg-background">
-      {/* Top App Bar */}
-      {/* <View className="flex-row justify-between items-center px-5 h-16 bg-surface/50 backdrop-blur-xl border-b border-white/5">
-        <Pressable
-          onPress={() => router.back()}
-          className="flex-row items-center gap-2"
-        >
-          <FontAwesome name="arrow-left" size={24} color={colors.primary} />
-          <Text className="text-xl font-bold text-primary tracking-tight">
-            My Cart
-          </Text>
-        </Pressable>
-        <View className="w-8 h-8 rounded-full overflow-hidden border border-white/10 bg-surface-container">
-          <Image
-            source={{
-              uri: "https://lh3.googleusercontent.com/aida-public/AB6AXuBXcX4wnGIVNuMYAGOqJnDifTLMHvViSbuwlIW28Pv2DNSwYpX9qO40ddiLLybSdstTmqHjT1GX6uVYJnaJzKCIiHo5f3Q80vswjcLE790AKonEvpz_ZZSQ7j3Qx8TTpjTjbm8re0R8AuPhKo1sN3ziE9g67-IKgFMKuZLwlCBK9QxuT8D9udqFSilYmqXRUukZJvEuHT8Z_D-fhVlm_7UIks9iaP2FopcGeWLLGB9Sbbe5cB685XNtitVUn_aVyeIzA9FA_fPnBaTU",
-            }}
-            className="w-full h-full"
-            resizeMode="cover"
-          />
-        </View>
-      </View> */}
-
       <ScrollView className="flex-1 px-5 pt-4 pb-40">
         {/* Items Section */}
         <View className="mb-6">
-          <Text className="text-xs font-semibold text-on-surface-variant uppercase tracking-widest mb-3">
+          <Text className="text-2xl font-semibold text-on-surface-variant uppercase tracking-widest mb-3">
             Items
           </Text>
           {cart.map((item) => {
